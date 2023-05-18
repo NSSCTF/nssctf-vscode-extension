@@ -1,14 +1,24 @@
 {
   "name": "nssctf",
-  "displayName": "NSSCTF",
+  "displayName": "NSSCTF(Beta)",
   "description": "NSSCTF VSCode插件",
   "version": "0.0.1",
+  "icon": "assets/icon/logo.png",
+  "publisher": "nssctf",
   "engines": {
     "vscode": "^1.78.0"
   },
+  "keywords": [
+    "nssctf",
+    "ctf"
+],
   "categories": [
     "Other"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NSSCTF/nssctf-vscode-extension"
+},
   "activationEvents": [
   ],
   "main": "./out/extension.js",

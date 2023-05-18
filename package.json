@@ -1,0 +1,114 @@
+{
+  "name": "nssctf",
+  "displayName": "NSSCTF",
+  "description": "NSSCTF VSCode插件",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.78.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "nssctf_bar",
+          "title": "NSSCTF",
+          "icon": "assets/icon/nssctf.png"
+        }
+      ]
+    },
+    "views": {
+      "nssctf_bar": [
+        {
+          "id": "ProblemExplorer",
+          "name": "题目"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "nssctf.pastePicture",
+        "category": "NSSCTF",
+        "title": "粘贴图片"
+      },
+      {
+        "command": "nssctf.signIn",
+        "category": "NSSCTF",
+        "title": "signIn"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "nssctf.pastePicture",
+        "key": "alt+shift+v",
+        "mac": "alt+shift+v",
+        "when": "editorLangId == markdown || editorLangId == mdx || resourceExtname == .ipynb"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "nssctf.signIn",
+          "when": "view == ProblemExplorer",
+          "group": "navigation@0"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "nssctf.pastePicture",
+          "when": "editorLangId == markdown || editorLangId == mdx || resourceExtname == .ipynb",
+          "group": "NSSCTF@1"
+        }
+      ]
+    },
+    "configuration": [
+      {
+        "title": "NSSCTF",
+        "properties": {
+          "nssctf.api.key": {
+            "type": "string",
+            "default": "",
+            "scope": "application",
+            "description": "NSSCTF平台API Key"
+          },
+          "nssctf.api.secret": {
+            "type": "string",
+            "default": "",
+            "description": "NSSCTF平台API Secret",
+            "scope": "application"
+          }
+        }
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "yarn run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "yarn run compile && yarn run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^8.1.0",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "16.x",
+    "@types/vscode": "^1.78.0",
+    "@typescript-eslint/eslint-plugin": "^5.59.1",
+    "@typescript-eslint/parser": "^5.59.1",
+    "@vscode/test-electron": "^2.3.0",
+    "eslint": "^8.39.0",
+    "glob": "^8.1.0",
+    "mocha": "^10.2.0",
+    "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "axios": "^1.4.0",
+    "form-data": "^4.0.0"
+  }
+}
